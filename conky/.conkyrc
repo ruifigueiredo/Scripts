@@ -1,0 +1,113 @@
+background yes
+font Zekton:size=7
+xftfont Zekton:size=7
+use_xft yes
+xftalpha 0.1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+#minimum_size 365x500
+minimum_size 220 5
+#maximum_width 220
+default_color d7d7d7
+default_shade_color black
+default_outline_color black
+alignment top_right
+gap_x 2
+gap_y 10
+no_buffers yes
+cpu_avg_samples 2
+override_utf8_locale no
+uppercase no # set to yes if you want all text to be in uppercase
+use_spacer no
+
+
+TEXT
+#${font Zekton:style=Bold:pixelsize=20}${alignc}${time %H:%M:%S}${font Zekton:size=8}
+#${font Zekton:style=Bold:pixelsize=10}${alignc}${time %A - %D}${font Zekton:size=8}
+SISTEMA ${hr 1 }
+SISTEMA ${hr 1}${color}
+Hostname: $alignr$nodename
+Kernel: $alignr$kernel
+Uptime: $alignr$uptime
+Processes: ${alignr}$processes ($running_processes running)
+Load: ${alignr}$loadavg
+
+PROCESSADORES ${hr 1}${color}
+CPU0 ${alignc} ${freq}MHz / ${acpitemp}C ${alignr}(${cpu cpu0}%)
+${cpubar 4 cpu0}
+#${cpugraph}
+CPU1 ${alignc} ${freq}MHz / ${acpitemp}C ${alignr}(${cpu cpu1}%)
+${cpubar 4 cpu1}
+#${cpugraph}
+CPU2 ${alignc} ${freq}MHz / ${acpitemp}C ${alignr}(${cpu cpu2}%)
+${cpubar 4 cpu2}
+#${cpugraph}
+CPU3 ${alignc} ${freq}MHz / ${acpitemp}C ${alignr}(${cpu cpu3}%)
+${cpubar 4 cpu3}
+CPU4 ${alignc} ${freq}MHz / ${acpitemp}C ${alignr}(${cpu cpu4}%)
+${cpubar 4 cpu4}
+CPU5 ${alignc} ${freq}MHz / ${acpitemp}C ${alignr}(${cpu cpu5}%)
+${cpubar 4 cpu5}
+CPU6 ${alignc} ${freq}MHz / ${acpitemp}C ${alignr}(${cpu cpu6}%)
+${cpubar 4 cpu6}
+CPU7 ${alignc} ${freq}MHz / ${acpitemp}C ${alignr}(${cpu cpu7}%)
+${cpubar 4 cpu7}
+
+MEMORIA ${hr 1}${color}
+${font StyleBats:size=16}g${font}   RAM: $memperc% ${alignr}${membar 8,60}
+${font StyleBats:size=16}j${font}   SWAP: $swapperc% ${alignr}${swapbar 8,60}
+${font StyleBats:size=16}I${font}  Bateria: ${battery_percent BAT0}% ${alignr}${battery_bar 8,60 BAT0}
+#RAM ${alignr}$mem / $memmax ($memperc%)
+#${membar 4}
+#SWAP ${alignr}$swap / $swapmax ($swapperc%)
+#${swapbar 4}
+
+PROCESSOS ${hr 1}${color}
+Highest CPU $alignr CPU% MEM%
+${top name 1}$alignr${top cpu 1}${top mem 1}
+${top name 2}$alignr${top cpu 2}${top mem 2}
+${top name 3}$alignr${top cpu 3}${top mem 3}
+${top name 4}$alignr${top cpu 4}${top mem 4}
+
+Highest MEM $alignr CPU% MEM%
+${top_mem name 1}$alignr${top_mem cpu 1}${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2}${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3}${top_mem mem 3}
+${top_mem name 4}$alignr${top_mem cpu 4}${top_mem mem 4}
+
+
+${voffset -10}HD ${hr 2}
+${voffset 4}${font StyleBats:size=14}A${font}   ${voffset -5}Root:
+${voffset 4}${fs_used /}/${fs_size /} ${alignr}${fs_bar 8,60 /}
+#FILESYSTEM ${hr 1}${color}
+#HOME ${fs_free /home/rui}/${fs_size /home/rui} ${alignr}${fs_bar 8,60 /home/rui}
+#ROOT ${fs_free /root}/${fs_size /root} ${alignr}${fs_bar 8,60 /root}
+#/: $alignr ${fs_used /} / ${fs_size /} ($alignr${fs_free_perc /}%)
+#${fs_bar 4 /}
+
+#/home/rui: $alignr ${fs_used /home/rui} / ${fs_size /home/rui} ($alignr#${fs_free_perc /home/rui}%)
+#${fs_bar 4 /home/rui}
+#HD I/O ${diskiograph 19}
+REDE ${hr 1}${color}
+
+${voffset -6}${font PizzaDude Bullets:size=14}O${font}   Up: ${upspeed eth1} kb/s ${alignr}${upspeedgraph eth1 8,60 F57900 FCAF3E}
+${voffset 4}${font PizzaDude Bullets:size=14}U${font}   Down: ${downspeed eth1} kb/s ${alignr}${downspeedgraph eth1 8,60 F57900 FCAF3E}
+${voffset 4}${font PizzaDude Bullets:size=14}N${font}   Upload: ${alignr}${totalup eth1}
+${voffset 4}${font PizzaDude Bullets:size=14}T${font}   Download: ${alignr}${totaldown eth1}
+${voffset 4}${font PizzaDude Bullets:size=14}a${font}   Local Ip: ${alignr}${addr eth1}
+
+#Down ${downspeed eth1} k/s ${alignr}Up ${upspeed eth1} k/s
+#${downspeedgraph eth1 25,107} ${alignr}${upspeedgraph eth1 25,107}
+#Total ${totaldown eth1} ${alignr}Total ${totalup eth1} 
+#Down ${downspeed eth0} k/s ${alignr}Up ${upspeed eth0} k/s
+#${downspeedgraph eth0 25,107} ${alignr}${upspeedgraph eth0 25,107}
+#Total ${totaldown eth0} ${alignr}Total ${totalup eth0} 
